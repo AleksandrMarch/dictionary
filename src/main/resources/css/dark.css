@@ -1,0 +1,61 @@
+.main-pane {
+    -fx-background-color: #2e2d40;
+}
+
+.category-label {
+    -fx-text-fill: white;
+}
+
+.content-vbox {
+    -fx-background-color: white;
+}
+
+.search-pane {
+    -fx-background-color: #2e2d40;
+}
+
+.search-box .text-input {
+    -fx-background-color: #434158;
+    -fx-text-fill: black;
+    -fx-skin: "com.sun.javafx.scene.control.skin.ComboBoxBaseSkin";
+    /*-fx-background-color: white, white, white, white;*/
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -2 -4;
+    -fx-background-size: 3;
+    -fx-padding: 0;
+    /*-fx-fill*/
+}
+
+.search-box {
+
+}
+
+.search-box .arrow-button .arrow{
+    -fx-background-color: transparent;
+}
+
+.search-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.newWordButton {
+    -fx-background-color: #434158;
+    -fx-text-fill: white;
+    -fx-background-radius: 12px;
+}
+
+.toolsHBox {
+    -fx-background-color: rgb(225, 225, 225);
+}
+
+.folderButton:hover {
+    -fx-background-radius: 0;
+    -fx-text-fill: white;
+    -fx-background-color: #434158;
+}
+
+.folderButton {
+    -fx-background-radius: 0;
+    -fx-text-fill: #d3d3d3;
+    -fx-background-color: #2e2d40;
+}
