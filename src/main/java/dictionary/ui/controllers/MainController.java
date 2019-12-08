@@ -1,6 +1,7 @@
 package dictionary.ui.controllers;
 
 import dictionary.IoCContainer;
+import dictionary.ui.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -17,6 +18,9 @@ public class MainController {
   private Button newWordButton;
 
   @FXML
+  private Button newFolderButton;
+
+  @FXML
   private VBox folderListVBox;
 
   private static final int PADDING = 20;
@@ -25,6 +29,8 @@ public class MainController {
   public void initialize() {
     setWidthListeners();
     updateFolderList();
+    initButtons();
+    IoCContainer.getDataSource();
   }
 
   private void setWidthListeners() {
@@ -43,5 +49,13 @@ public class MainController {
       folderButton.setAlignment(Pos.BASELINE_LEFT);
       folderListVBox.getChildren().add(folderButton);
     });
+  }
+
+  private void initButtons() {
+    newFolderButton.setOnAction((event) -> openNewFolderModal());
+  }
+
+  private void openNewFolderModal() {
+    ModalWindow.open(FXMLLoader.loadParent(FXMLLoader.NEW_FOLDER_FXML), "New folder");
   }
 }

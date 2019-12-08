@@ -1,19 +1,25 @@
 package dictionary.data;
 
+import dictionary.data.DAO.*;
+import dictionary.data.exceptions.DataFileNotFound;
+
+import java.io.*;
 import java.util.*;
 
-public class TextFileDataSource implements DataSource {
-  private static final String DATA_FOLDER_NAME = "data";
-  private static final String FOLDERS_FILE_NAME = "folders";
-  private static final String RECORDS_FILE_NAME = "records";
-
+public class TextFileDataSource extends AbstractTextFileDataSource implements DataSource {
   public TextFileDataSource() {
-    initialize();
+    super();
   }
 
   @Override
-  public void saveRecord(Record record) {
-
+  public void saveRecord(RecordDAO record) {
+    addLineToFile(
+        AbstractTextFileDataSource.RECORDS_FILE_NAME,
+        getStringData(
+            record.getEnglishWord(),
+            record.getRussianWord()
+        )
+    );
   }
 
   @Override
@@ -22,22 +28,27 @@ public class TextFileDataSource implements DataSource {
   }
 
   @Override
-  public List<Record> getAllRecords() {
+  public List<RecordDAO> getAllRecords() {
     return null;
   }
 
   @Override
-  public Record findRecordByEnglishWord() {
+  public RecordDAO findRecordByEnglishWord() {
     return null;
   }
 
   @Override
-  public List<Folder> getAllFolders() {
-    List<Folder> folderList = new ArrayList<>();
-    folderList.add(new Folder("All"));
-    folderList.add(new Folder("Home"));
-    folderList.add(new Folder("Street"));
-    folderList.add(new Folder("Work"));
+  public List<FolderDAO> getAllFolders() {
+    List<FolderDAO> folderList = new ArrayList<>();
+    try {
+      BufferedReader reader = getFileReader(AbstractTextFileDataSource.FOLDERS_FILE_NAME);
+      String line;
+      while ((line = reader.readLine()) != null) {
+        folderList.add(new FolderDAO(line));
+      }
+    } catch (DataFileNotFound | IOException e) {
+      e.printStackTrace();
+    }
     return folderList;
   }
 
@@ -47,11 +58,10 @@ public class TextFileDataSource implements DataSource {
   }
 
   @Override
-  public void saveFolder(Folder folder) {
-
-  }
-
-  private void initialize() {
-
+  public void saveFolder(FolderDAO folder) {
+    addLineToFile(
+        AbstractTextFileDataSource.FOLDERS_FILE_NAME,
+        getStringData(folder.getFolderName())
+    );
   }
 }

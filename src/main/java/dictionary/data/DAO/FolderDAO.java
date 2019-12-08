@@ -1,9 +1,9 @@
-package dictionary.data;
+package dictionary.data.DAO;
 
-public class Folder {
+public class FolderDAO {
   private String folderName;
 
-  public Folder(String folderName) {
+  public FolderDAO(String folderName) {
     this.folderName = folderName;
   }
 

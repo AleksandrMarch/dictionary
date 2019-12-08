@@ -1,19 +1,21 @@
 package dictionary.data;
 
+import dictionary.data.DAO.*;
+
 import java.util.List;
 
 public interface DataSource {
-  public void saveRecord(Record record);
+  public void saveRecord(RecordDAO record);
 
   public void deleteRecordByEnglishWord(String englishWord);
 
-  public List<Record> getAllRecords();
+  public List<RecordDAO> getAllRecords();
 
-  public Record findRecordByEnglishWord();
+  public RecordDAO findRecordByEnglishWord();
 
-  public List<Folder> getAllFolders();
+  public List<FolderDAO> getAllFolders();
 
   public void deleteFolderByName(String folderName);
 
-  public void saveFolder(Folder folder);
+  public void saveFolder(FolderDAO folder);
 }

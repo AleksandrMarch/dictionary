@@ -1,6 +1,6 @@
-package dictionary.data;
+package dictionary.data.DAO;
 
-public class Record {
+public class RecordDAO {
   private String englishWord;
   private String russianWord;
 

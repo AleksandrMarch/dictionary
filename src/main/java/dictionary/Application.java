@@ -1,26 +1,19 @@
 package dictionary;
 
-import javafx.fxml.FXMLLoader;
+import dictionary.ui.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.net.URL;
-
 public class Application extends javafx.application.Application {
   public void start(Stage primaryStage) {
-    try {
-      openMainView(primaryStage);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    openMainView(primaryStage);
+    Object obj;
   }
 
-  private void openMainView(Stage primaryStage) throws IOException {
-    URL mainViewUrl = getClass().getClassLoader().getResource("fxml/main.fxml");
-    if (mainViewUrl == null) return;
-    Parent root = FXMLLoader.load(mainViewUrl);
-    Scene scene = new Scene(root);
+  private void openMainView(Stage primaryStage) {
+    Parent parent = FXMLLoader.loadParent(FXMLLoader.MAIN_FXML);
+    if (parent == null) return;
+    Scene scene = new Scene(parent);
     primaryStage.setScene(scene);
     primaryStage.setTitle("Dictionary");
     primaryStage.show();

@@ -19,7 +19,7 @@
                   </Label>
                </left>
                <right>
-                  <Button mnemonicParsing="false" text="+ NEW" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                  <Button fx:id="newFolderButton" mnemonicParsing="false" text="+ NEW" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets right="10.0" />
                      </BorderPane.margin>
